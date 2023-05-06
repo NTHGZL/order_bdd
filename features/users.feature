@@ -18,6 +18,13 @@ Feature: Crud User
               | firstname | lastname | email | birthDate | phone | address |
               | Mike | Dolly | mike@outlook.fr | 1990-01-01 | 0123456789 | 4 rue de la Paix |
 
+    Scenario: Create User but his phone number is not valid
+        When I create a "user" with following data:
+            | firstname | lastname | email | birthDate | phone | address |
+            | Mike | Dolly | mike@outlook.fr | 1990-01-01 | 0123456780559 | 4 rue de la Paix |
+        Then I should have response "BAD_REQUEST"
+           
+
     Scenario: Update User
         When I update a "user" with following data:
             | id | firstname | lastname | email | birthDate | phone | address |

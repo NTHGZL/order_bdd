@@ -51,9 +51,7 @@ export default (Order, User, Recipe) => {
         if(!users.find((user) => user.id === order.userId)) {
             return null;
         }
-        if(order.quantity < 1) {
-            return null;
-        }
+    
 
         const newOrder = new Order({id: uuidv4(), ...order})
         orders.push(newOrder);

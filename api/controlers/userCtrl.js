@@ -1,3 +1,4 @@
+import User from "../models/User.js";
 
 export default (userRepo) => {
 
@@ -7,6 +8,13 @@ export default (userRepo) => {
         }
 
         const createUser = (req, res) => {
+
+            if(!User.phoneIsValid(req.body.phone)){
+                res.status(400).send({
+                    error: 'Phone not valid'
+                })
+            }
+
             const user = userRepo.createUser(req.body);
             res.status(201).send({data: user});
         }

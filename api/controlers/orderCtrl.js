@@ -16,6 +16,12 @@ export default (orderRepo) => {
                 return res.status(400).send({error: 'Invalid date format'});
             }
 
+        if(req.body.quantity < 1) {
+            return res.status(400).send({
+                error: 'Quantity not valid'
+            })
+        }
+
         const order = orderRepo.createOrder(req.body);
 
         if (!order) {
