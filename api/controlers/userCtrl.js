@@ -10,7 +10,7 @@ export default (userRepo) => {
         const createUser = (req, res) => {
 
             if(!User.phoneIsValid(req.body.phone)){
-                res.status(400).send({
+                return res.status(400).send({
                     error: 'Phone not valid'
                 })
             }
